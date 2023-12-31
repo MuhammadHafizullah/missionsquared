@@ -1,0 +1,85 @@
+/* body{
+    background-color: #331D4A;
+} */
+
+
+header{
+    z-index: 99999;
+}
+
+.hero{
+    background: url("../public/Main-banner-BG.jpg");
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+.checkbox {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .form-group label {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .form-group label:before {
+    content:'';
+    -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 13px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 8px;
+    border-radius: 4px;
+  }
+  
+  .form-group input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 9px;
+    width: 6px;
+    height: 14px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+
+  tr.admin_list_table_row:nth-child(even){
+    background-color: #F1F1ED;
+  }
+
+
+  .small_chart_wrapper canvas{
+      border-top: 2px solid #331D4A;
+      border-right: 2px solid #331D4A;
+      border-bottom: 10px solid #331D4A;
+      border-left: 2px solid #331D4A;
+  }
+
+
+  .lollipop{
+    background-color: white;
+  }
+
+@media (max-width: 991px) {
+    .hero{
+        background-size: cover;
+    }
+}
+@media (max-width: 576px) {
+    .hero{
+        background-position: left top;
+    }
+}
+
