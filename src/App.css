@@ -59,6 +59,19 @@ header{
     background-color: #F1F1ED;
   }
 
+  /* .small_chart_wrapper{
+    background-image: url('/public/small_chartbg.svg');
+    background-size: 100% 100%;
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    padding: 40px;
+  } */
+
+  /* .small_chart_wrapper{
+    position: relative;
+    z-index: 10;
+  }
+
 
   .small_chart_wrapper canvas{
       border-top: 2px solid #331D4A;
@@ -67,6 +80,37 @@ header{
       border-left: 2px solid #331D4A;
   }
 
+  .small_chart_wrapper::after{
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #554266;
+  }
+
+  .small_chart_wrapper::before{
+    content: '';
+    position: absolute;
+    width:10px;
+    height: 10px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    z-index: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f4731e;
+    z-index: 10;
+  } */
+
+
+  /* .small_chart_wrapper canvas{
+    width: 350px;
+    height: 120px !important;
+  } */
 
   .lollipop{
     background-color: white;
@@ -76,10 +120,15 @@ header{
     .hero{
         background-size: cover;
     }
+
 }
 @media (max-width: 576px) {
     .hero{
         background-position: left top;
+    }
+
+    .lollipop canvas{
+      height: 400px !important;
     }
 }
 

@@ -36,7 +36,7 @@ const WorkStyleGraph = () => {
       </section>
       <section className="py-20">
         <div className="container bg-beige-100 mx-auto md:px-10 px-5">
-        <ScoresChart work_style={[23,-45,16,33,-5,23,26,-35,-41,11,28]}/>
+        <ScoresChart work_style={[23,-45,16,33,-5,23,26,-35,-41,11,43]}/>
         </div>
       </section>
     </main>

@@ -19,8 +19,9 @@ const lollipop = {
     const {ctx} = chart;
     ctx.save();
     for (let i = 0; i < chart.getDatasetMeta(0).data.length; i++) {
-      const x = chart.getDatasetMeta(0).data[i].x;
-      const y = chart.getDatasetMeta(0).data[i].y;
+      let x = chart.getDatasetMeta(0).data[i].x;
+      let y = chart.getDatasetMeta(0).data[i].y;
+      if (x > 619.8) {x = x - 5}else if (x < 619.8) {x = x + 5}
       circle(x, y);
     }
     function circle(xPos, yPos) {
@@ -39,6 +40,25 @@ const lollipop = {
 }
 
 
+const customLabelBg = {
+  id:'customLabelBg',
+  beforeDraw(chart,args, plugins){
+    const {ctx, scales: {x, y}, chartArea:{left} } = chart;
+    ctx.save();
+    if(y._labelSizes){
+      for (let i = 0; i < y.ticks.length; i++) {
+        
+        if (i % 2 == 0) {
+          ctx.fillStyle = 'blue',
+        ctx.fillRect(y.left, y.getPixelForTick(i) - y._labelSizes.heights[i], y.right, y._labelSizes.heights[i]);
+        ctx.restore();
+        }
+      }
+    }
+  }
+}
+
+
   ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -49,7 +69,8 @@ const lollipop = {
 );
 
   ChartJS.register(
-  lollipop
+  lollipop,
+  // customLabelBg
   )
 
   const data = {
@@ -67,6 +88,8 @@ const lollipop = {
   }
 
   const options = {
+    responsive:true,
+    maintainRatio:true,
     indexAxis: "y",
     plugins:{
         annotation:{
@@ -156,7 +179,9 @@ const lollipop = {
         tooltip:{
           yAlign: 'top'
         },
-        lollipop: lollipop
+        lollipop: lollipop,
+        customLabelBg:customLabelBg,
+        imageBackground: false,
     },
     scales: {
       x: {
@@ -166,7 +191,7 @@ const lollipop = {
           grid: {
             display: true,
           },
-          position: 'top', // Display labels on top
+          position: 'top',
         },
       x2: {
           min: -50,
@@ -175,11 +200,12 @@ const lollipop = {
           grid: {
             display: true,
           },
-          position: 'bottom', // Display labels on bottom
+          position: 'bottom',
         },
       y: {
         ticks:{
-          color:'#458FA3'
+          color:'#458FA3',
+          backgroundColor: 'red',
         },
         grid: {
           display: true,

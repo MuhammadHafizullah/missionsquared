@@ -50,6 +50,8 @@ const UnlabeledLine = ({work_style}) => {
     },
     scales: {
       x: {
+        min:-30,
+        max:+30,
         display: false,
         beginAtZero: false,
         grid: {

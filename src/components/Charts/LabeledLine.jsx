@@ -20,6 +20,28 @@ const LabeledLine = ({work_style}) => {
   Tooltip
 );
 
+
+// custom plugin
+
+const image = new Image();
+image.src = '/small_chartbg.svg';
+
+const imageBackground = {
+  id: 'imageBackground',
+  beforeDatasetsDraw(chart, args, plugins){
+    const {ctx, chartArea: {top, bottom, left, right, width, height } } = chart;
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.01)';
+    ctx.fillRect(left, top, width, height);
+    ctx.drawImage(image, left, top - 15, width, height + 35);
+
+  }
+}
+
+
+ChartJS.register(imageBackground);
+
+
   const data = {
     labels: ["", "", "", ""],
     datasets: [
@@ -28,7 +50,7 @@ const LabeledLine = ({work_style}) => {
         label: 'sale of the week',
         data: work_style,
         fill: false,
-        pointBorderWidth: 10,
+        pointBorderWidth: 11,
         backgroundColor: "#554266",
         borderColor: [
         "#331D4A",
@@ -36,20 +58,9 @@ const LabeledLine = ({work_style}) => {
         "#458FA3",
         "#363847",
       ],
-        borderWidth: 2,
+        borderWidth: 1,
       }
     ]
-  }
-
-  const legend = {
-    display: false
-  }
-
-  const customBorder = {
-    id: 'customBorder',
-    beforeDraw(chart, args, pluginOptions){
-        const {ctx} = chart;
-    }
   }
 
 // custom point text
@@ -62,52 +73,45 @@ work_style.forEach(function(value, index) {
 });
 
   const options = {
-    responsive:true,
+    responsive: true,
+    maintainAspectRatio: false,
     indexAxis: "y",
     plugins:{
-        customBorder: customBorder,
+        imageBackground:imageBackground,
         datalabels:{
           display: true,
+          
           color:'white',
           formatter: (value, ctx) => {
             let dataValues = ctx.dataset.data[ctx.dataIndex];
             return letterMap[dataValues];
+          },
+          font:{
+            size:8,
           }
         },
-        lollipop: false
+        lollipop: false,
+    },
+    font:{
+      family:'Merriweather',
     },
     scales: {
       x: {
-        
+        offset:true,
         beginAtZero: false,
-        ticks: {
-            display: false,
-        },
-        grid: {
-          display: true,
-          color: (context)=>{
-            if(context.tick.$context.index === 2){
-                return '#331D4A';
-            }
-            else{
-                return 'rgba(0,0,0,0.1)'
-            }
-          }
-        },
+        min:-30,
+        max:+30,
+        display:false,
       },
       y: {
-        ticks: {
-            display: false,
-        },
-        grid: {
-          display: false,
-        },
+        offset:true,
+        display:false,
       },
     },
   }
 
   return (
-    <div className="w-full small_chart_wrapper max-w-80 max-h-32">
+    <div className="small_chart_wrapper lg:w-[430px] md:w-72 max-h-32">
     <Line options={options} data={data} id="labelLine"/>
     </div>
   )

@@ -6,7 +6,7 @@ const adminListData = [
         "email" : 'elizabeth@gmail.com',
         "completed_date" : '2023-12-20',
         "animal" : "/animal-dolphin.svg",
-        "work_style_pattern" : [7, 10, 1, 2.5],
+        "work_style_pattern" : [-23, 15, -10, 27],
         "has_360" : true,
         "multiples" : false
     },
@@ -17,7 +17,7 @@ const adminListData = [
         "email" : 'jason@gmail.com',
         "completed_date" : '2023-11-18',
         "animal" : "/animal-eagle.svg",
-        "work_style_pattern" : [50, 35, 25, 10],
+        "work_style_pattern" : [16, -24, 23, 12],
         "has_360" : false,
         "multiples" : true
     },
@@ -28,7 +28,7 @@ const adminListData = [
         "email" : 'megpoag@gmail.com',
         "completed_date" : '2023-10-30',
         "animal" : "/animal-octopus.svg",
-        "work_style_pattern" : [7, 10, 1, 2.5],
+        "work_style_pattern" : [-28, 18, -13, 21],
         "has_360" : false,
         "multiples" : false
     },
@@ -39,7 +39,7 @@ const adminListData = [
         "email" : 'sundsvold@gmail.com',
         "completed_date" : '2023-10-20',
         "animal" : "/animal-wolf.svg",
-        "work_style_pattern" : [10, 20, 35, 50],
+        "work_style_pattern" : [27, 12, -10, -23],
         "has_360" : false,
         "multiples" : false
     },
